@@ -6,7 +6,7 @@
 
 	<select id="queryByPhone" resultType="io.renren.entity.User">
 		select * from tb_user
-		where phone = #{phone} and password = #{password}
+		where phone = #{0} and password = #{1}
 	</select>
 
 	<insert id="register" parameterType="io.renren.entity.User"
