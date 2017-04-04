@@ -16,7 +16,7 @@ public interface UserDao extends BaseDao<User> {
 	/**
 	 * 根据用户名，查询系统用户
 	 */
-	User queryByPhone(String phone);
+	User queryByPhone(String phone, String password);
 	
 	/**
 	 *注册

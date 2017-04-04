@@ -27,7 +27,6 @@ public class UserController {
         @Autowired
         private UserService userService;
 
-        
         /**
          * 用户注册
          * 
@@ -36,31 +35,33 @@ public class UserController {
          */
         @RequestMapping("/yy_register")
         @ResponseBody
-        public String register(@RequestBody User  user) {
-                System.out.println(user.toString());
+        public String register(@RequestBody User user) {
+
                 if (user != null) {
                         userService.registerService(user);
+                        System.out.println(user.toString());
                         return "注册成功";
-                }else{
+                } else {
                         return "注册失败";
-                }   
+                }
         }
+
         /**
          * 提交登录（后期改json登录）
          */
         @RequestMapping("/yy_login")
         @ResponseBody
-        public String login(String phone, String password, HttpSession session)throws IOException {
-                User user = userService.getUserToken(phone);
-               System.out.println(user.toString());
-
-                if (user == null || !user.getPassword().equals(password)){
-                        System.out.println("用户登录失败："+"账号："+phone + "\n"+"密码：" + password);
-                        return "login_error";
-                }else{
-                        session.setAttribute("user",user);
-                        System.out.println("用户登录成功："+"账号："+phone + "\n"+"密码：" + password);
-                        return user.getToken();
-                }      
+        public User login(String phone, String password) {
+                User user = userService.getUserToken(phone, password);
+                if (user != null) {
+                        System.out.println("用户信息" + user.toString());
+                        System.out.println("用户登录成功：" + "账号：" + phone + "\n"
+                                        + "密码：" + password);
+                        return user;
+                } else {
+                        System.out.println("用户登录失败：" + "账号：" + phone + "\n"
+                                        + "密码：" + password);
+                        return user;
+                }
         }
 }

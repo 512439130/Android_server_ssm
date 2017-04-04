@@ -6,17 +6,17 @@
 
 	<select id="queryByPhone" resultType="io.renren.entity.User">
 		select * from tb_user
-		where phone = #{phone}
+		where phone = #{phone} and password = #{password}
 	</select>
 
 	<insert id="register" parameterType="io.renren.entity.User"
 		useGeneratedKeys="true" keyProperty="userId">
 		insert into tb_user
 		(
-		`user_phone`,
-		`user_nickname`,
-		`user_password`,
-		`user_token`
+		`phone`,
+		`nickname`,
+		`password`,
+		`token`
 		)
 		values
 		(

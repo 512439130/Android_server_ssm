@@ -9,7 +9,7 @@ public interface UserService {
 	/**
 	 * 根据用户名，查询系统用户
 	 */
-	User getUserToken(String phone);
+	User getUserToken(String phone , String password);
 	
 	/**
 	 * 根据用户ID，查询用户
