@@ -1,11 +1,9 @@
 io\renren\utils\DateUtils.class
-io\renren\utils\PageUtils.class
 io\renren\dao\BaseDao.class
+io\renren\utils\PageUtils.class
 io\renren\controller\UserController.class
-io\renren\controller\LoginController.class
-io\renren\controller\UiLoginController.class
-io\renren\service\UserService.class
 io\renren\dao\UserDao.class
+io\renren\service\UserService.class
 io\renren\service\impl\UserServiceImpl.class
 io\renren\entity\User.class
 io\renren\utils\SpringContextUtils.class

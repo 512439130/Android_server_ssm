@@ -12,7 +12,10 @@ import java.util.List;
  * @date 2016年9月18日 上午9:28:55
  */
 public class User implements Serializable {
-
+        /**
+         * 用户ID
+         */
+        private Integer userId;
         /**
          * 用户名(手机号)
          */
@@ -34,6 +37,14 @@ public class User implements Serializable {
         private String token;
 
         
+
+        public Integer getUserId() {
+                return userId;
+        }
+
+        public void setUserId(Integer userId) {
+                this.userId = userId;
+        }
 
         public String getPhone() {
                 return phone;
@@ -67,8 +78,12 @@ public class User implements Serializable {
                 this.token = token;
         }
 
-        public User(String phone, String nickname, String password, String token) {
+        
+
+        public User(Integer userId, String phone, String nickname,
+                        String password, String token) {
                 super();
+                this.userId = userId;
                 this.phone = phone;
                 this.nickname = nickname;
                 this.password = password;
@@ -77,5 +92,13 @@ public class User implements Serializable {
 
         public User() {
         }
+
+        @Override
+        public String toString() {
+                return "User [userId=" + userId + ", phone=" + phone
+                                + ", nickname=" + nickname + ", password="
+                                + password + ", token=" + token + "]";
+        }
+        
 
 }

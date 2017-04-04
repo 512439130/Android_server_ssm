@@ -37,8 +37,7 @@ public class UserController {
         @RequestMapping("/yy_register")
         @ResponseBody
         public String register(@RequestBody User  user) {
-                System.out.println(user.getPhone() + user.getNickname()
-                                + user.getPassword() + user.getToken());
+                System.out.println(user.toString());
                 if (user != null) {
                         userService.registerService(user);
                         return "注册成功";
@@ -51,17 +50,17 @@ public class UserController {
          */
         @RequestMapping("/yy_login")
         @ResponseBody
-        public String login(String username, String password, HttpSession session)throws IOException {
-                User user = userService.queryByUserName(username);
+        public String login(String phone, String password, HttpSession session)throws IOException {
+                User user = userService.getUserToken(phone);
+               System.out.println(user.toString());
+
                 if (user == null || !user.getPassword().equals(password)){
-                        System.out.println("用户登录失败："+"账号："+username + "\n"+"密码：" + password);
-                        return "登录失败";
+                        System.out.println("用户登录失败："+"账号："+phone + "\n"+"密码：" + password);
+                        return "login_error";
                 }else{
                         session.setAttribute("user",user);
-                        System.out.println("用户登录成功："+"账号："+username + "\n"+"密码：" + password);
-                        return "登录成功";
-                }       
-
-
+                        System.out.println("用户登录成功："+"账号："+phone + "\n"+"密码：" + password);
+                        return user.getToken();
+                }      
         }
 }

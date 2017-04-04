@@ -9,7 +9,7 @@ public interface UserService {
 	/**
 	 * 根据用户名，查询系统用户
 	 */
-	User queryByUserName(String username);
+	User getUserToken(String phone);
 	
 	/**
 	 * 根据用户ID，查询用户
