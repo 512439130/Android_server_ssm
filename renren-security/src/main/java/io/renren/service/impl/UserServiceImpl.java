@@ -21,8 +21,8 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 
 	@Override
-	public User getUserToken(String phone , String password) {
-		return userDao.queryByPhone(phone , password);
+	public User getUserToken(Map<String, Object> map) {
+		return userDao.queryToken(map);
 	}
 	
 	@Override

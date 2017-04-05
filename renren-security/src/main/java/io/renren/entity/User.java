@@ -12,6 +12,19 @@ import java.util.List;
  * @date 2016年9月18日 上午9:28:55
  */
 public class User implements Serializable {
+        public User() {
+        }
+        
+        public User(Integer userId, String userPhone, String userNickname,
+                        String userPassword, String userToken) {
+                super();
+                this.userId = userId;
+                this.userPhone = userPhone;
+                this.userNickname = userNickname;
+                this.userPassword = userPassword;
+                this.userToken = userToken;
+        }
+
         /**
          * 用户ID
          */
@@ -19,24 +32,22 @@ public class User implements Serializable {
         /**
          * 用户名(手机号)
          */
-        private String phone;
+        private String userPhone;
 
         /**
          * 昵称
          */
-        private String nickname;
+        private String userNickname;
 
         /**
          * 密码
          */
-        private String password;
+        private String userPassword;
 
         /**
          * 融云Token
          */
-        private String token;
-
-        
+        private String userToken;
 
         public Integer getUserId() {
                 return userId;
@@ -46,59 +57,44 @@ public class User implements Serializable {
                 this.userId = userId;
         }
 
-        public String getPhone() {
-                return phone;
+        public String getUserPhone() {
+                return userPhone;
         }
 
-        public void setPhone(String phone) {
-                this.phone = phone;
+        public void setUserPhone(String userPhone) {
+                this.userPhone = userPhone;
         }
 
-        public String getNickname() {
-                return nickname;
+        public String getUserNickname() {
+                return userNickname;
         }
 
-        public void setNickname(String nickname) {
-                this.nickname = nickname;
+        public void setUserNickname(String userNickname) {
+                this.userNickname = userNickname;
         }
 
-        public String getPassword() {
-                return password;
+        public String getUserPassword() {
+                return userPassword;
         }
 
-        public void setPassword(String password) {
-                this.password = password;
+        public void setUserPassword(String userPassword) {
+                this.userPassword = userPassword;
         }
 
-        public String getToken() {
-                return token;
+        public String getUserToken() {
+                return userToken;
         }
 
-        public void setToken(String token) {
-                this.token = token;
+        public void setUserToken(String userToken) {
+                this.userToken = userToken;
         }
 
         
 
-        public User(Integer userId, String phone, String nickname,
-                        String password, String token) {
-                super();
-                this.userId = userId;
-                this.phone = phone;
-                this.nickname = nickname;
-                this.password = password;
-                this.token = token;
-        }
+       
+       
 
-        public User() {
-        }
-
-        @Override
-        public String toString() {
-                return "User [userId=" + userId + ", phone=" + phone
-                                + ", nickname=" + nickname + ", password="
-                                + password + ", token=" + token + "]";
-        }
+       
         
 
 }

@@ -4,26 +4,26 @@
 <mapper namespace="io.renren.dao.UserDao">
 
 
-	<select id="queryByPhone" resultType="io.renren.entity.User">
+	<select id="queryToken"  resultType="io.renren.entity.User">
 		select * from tb_user
-		where phone = #{0} and password = #{1}
+		where user_phone = #{userPhone} and user_password = #{userPassword}
 	</select>
 
 	<insert id="register" parameterType="io.renren.entity.User"
 		useGeneratedKeys="true" keyProperty="userId">
 		insert into tb_user
 		(
-		`phone`,
-		`nickname`,
-		`password`,
-		`token`
+		`user_phone`,
+		`user_nickname`,
+		`user_password`,
+		`user_token`
 		)
 		values
 		(
-		#{phone},
-		#{nickname},
-		#{password},
-		#{token}
+		#{userPhone},
+		#{userNckname},
+		#{userPassword},
+		#{userToken}
 		)
 	</insert>
 

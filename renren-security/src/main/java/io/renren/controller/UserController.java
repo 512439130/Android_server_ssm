@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -51,16 +52,20 @@ public class UserController {
          */
         @RequestMapping("/yy_login")
         @ResponseBody
-        public User login(String phone, String password) {
-                User user = userService.getUserToken(phone, password);
+        public User login(String userPhone, String userPassword) {
+                Map map = new HashMap();
+              map.put("userPhone", userPhone);
+              map.put("userPassword", userPassword);
+              
+                User user = userService.getUserToken(map);
                 if (user != null) {
                         System.out.println("用户信息" + user.toString());
-                        System.out.println("用户登录成功：" + "账号：" + phone + "\n"
-                                        + "密码：" + password);
+                        System.out.println("用户登录成功：" + "账号：" + userPhone + "\n"
+                                        + "密码：" + userPassword);
                         return user;
                 } else {
-                        System.out.println("用户登录失败：" + "账号：" + phone + "\n"
-                                        + "密码：" + password);
+                        System.out.println("用户登录失败：" + "账号：" + userPhone + "\n"
+                                        + "密码：" + userPassword);
                         return user;
                 }
         }
