@@ -21,7 +21,7 @@
 		values
 		(
 		#{userPhone},
-		#{userNckname},
+		#{userNickname},
 		#{userPassword},
 		#{userToken}
 		)
