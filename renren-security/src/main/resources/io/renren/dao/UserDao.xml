@@ -26,6 +26,11 @@
 		#{userToken}
 		)
 	</insert>
+	
+	<select id="getFriendPhone"  resultType="io.renren.entity.TeamFriend">
+        select * from tb_friend
+        where user_id = #{userId} 
+    </select>
 
 	<select id="queryObject" resultType="io.renren.entity.User">
 		select * from t_user where

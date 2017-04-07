@@ -4,6 +4,8 @@ package io.renren.dao;
 
 import java.util.List;
 import java.util.Map;
+
+import io.renren.entity.TeamFriend;
 import io.renren.entity.User;
 /**
  * 系统用户
@@ -24,4 +26,10 @@ public interface UserDao extends BaseDao<User> {
 	 */
 	
 	void register(User user);
+	
+	/**
+	 * 获取用户好友信息
+	 * 
+	 */
+	TeamFriend getFriendPhone(Map<String, Object> map);
 }

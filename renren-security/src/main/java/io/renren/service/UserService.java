@@ -1,5 +1,6 @@
 package io.renren.service;
 
+import io.renren.entity.TeamFriend;
 import io.renren.entity.User;
 
 import java.util.List;
@@ -11,6 +12,21 @@ public interface UserService {
 	 */
 	User getUserToken(Map<String, Object> map);
 	
+	
+	/**
+         * 注册用户
+         */
+        void registerService(User user);
+        
+        /**
+         * 根据user_id(phone)，查询好友信息
+         */
+        TeamFriend getFriendPhone(Map<String, Object> map);
+	
+	
+        
+        
+        
 	/**
 	 * 根据用户ID，查询用户
 	 * @param userId
@@ -28,9 +44,6 @@ public interface UserService {
 	 */
 	int queryTotal(Map<String, Object> map);
 	
-	/**
-	 * 保存用户
-	 */
-	void registerService(User user);
+	
 
 }
