@@ -33,11 +33,10 @@ public class UserServiceImpl implements UserService {
 	        userDao.register(user);
 	}
 
-        @Override
-        public TeamFriend getFriendPhone(Map<String, Object> map) {
-                // TODO Auto-generated method stub
-                return  userDao.getFriendPhone(map);
-        }
+        
+        
+        
+        
         
         
         @Override

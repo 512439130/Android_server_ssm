@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.dao.FriendDao">
+
+	<select id="getFriendPhone" resultMap="FriendMap">
+		select * from tb_user , tb_friend
+		where tb_user.user_phone=tb_friend.friend_phone
+		and tb_friend.user_id = #{userPhone}
+	</select>
+	<resultMap id="FriendMap" type="io.renren.entity.TeamFriend">
+		<id property="friendId" column="firend_id"></id>
+		<result property="userId" column="user_id" />
+		<result property="friendRemark" column="friend_remark" />
+		<association property="friendPhone" column="friend_phone" javaType="io.renren.entity.User">
+			<id property="userId" column="user_id" />
+			<result property="userPhone" column="user_phone" />
+			<result property="userNickname" column="user_nickname" />
+			<result property="userPassword" column="user_password" />
+            <result property="userToken" column="user_token" />
+            <result property="userImage" column="user_image" />
+            <result property="userSex" column="user_sex" />
+		</association>
+	</resultMap>
+
+</mapper>

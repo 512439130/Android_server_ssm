@@ -27,9 +27,5 @@ public interface UserDao extends BaseDao<User> {
 	
 	void register(User user);
 	
-	/**
-	 * 获取用户好友信息
-	 * 
-	 */
-	TeamFriend getFriendPhone(Map<String, Object> map);
+	
 }

@@ -1,10 +1,12 @@
 package io.renren.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import io.renren.entity.TeamFriend;
 import io.renren.entity.User;
+import io.renren.service.FriendService;
 import io.renren.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class FriendController {
         
         @Autowired
-        private UserService userService;        
+        private FriendService friendService;        
         
         /**
          * 查询用户的好友列表
@@ -26,11 +28,11 @@ public class FriendController {
          */
         @RequestMapping("/yy_obtain_friend")
         @ResponseBody
-        public TeamFriend login(String user_id) {
+        public List<TeamFriend> getFriend(String user_id) {
               Map map = new HashMap();
-              map.put("user_id", user_id);
-              
-              TeamFriend teamFriend = userService.getFriendPhone(map);
+              map.put("userPhone", user_id);
+              System.out.print(user_id);
+              List<TeamFriend> teamFriend = friendService.getFriendPhone(map);
                 if (teamFriend != null) {
                         System.out.println("好友信息：" + teamFriend.toString());
                        

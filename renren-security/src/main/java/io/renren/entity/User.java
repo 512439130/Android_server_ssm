@@ -12,19 +12,6 @@ import java.util.List;
  * @date 2016年9月18日 上午9:28:55
  */
 public class User implements Serializable {
-        public User() {
-        }
-        
-        public User(Integer userId, String userPhone, String userNickname,
-                        String userPassword, String userToken) {
-                super();
-                this.userId = userId;
-                this.userPhone = userPhone;
-                this.userNickname = userNickname;
-                this.userPassword = userPassword;
-                this.userToken = userToken;
-        }
-
         /**
          * 用户ID
          */
@@ -48,7 +35,35 @@ public class User implements Serializable {
          * 融云Token
          */
         private String userToken;
+        /**
+         * 用户头像url
+         */
+        private String userImage;
+        /**
+         * 用户性别
+         */
+        private String userSex;
 
+        public User() {
+        }
+        
+        
+        public User(Integer userId, String userPhone, String userNickname,
+                        String userPassword, String userToken,
+                        String userImage, String userSex) {
+                super();
+                this.userId = userId;
+                this.userPhone = userPhone;
+                this.userNickname = userNickname;
+                this.userPassword = userPassword;
+                this.userToken = userToken;
+                this.userImage = userImage;
+                this.userSex = userSex;
+        }
+
+        
+        
+        
         public Integer getUserId() {
                 return userId;
         }
@@ -90,7 +105,23 @@ public class User implements Serializable {
         }
 
         
+        public String getUserImage() {
+                return userImage;
+        }
 
+        public void setUserImage(String userImage) {
+                this.userImage = userImage;
+        }
+
+        public String getUserSex() {
+                return userSex;
+        }
+
+        public void setUserSex(String userSex) {
+                this.userSex = userSex;
+        }
+
+        
        
        
 

@@ -18,11 +18,7 @@ public interface UserService {
          */
         void registerService(User user);
         
-        /**
-         * 根据user_id(phone)，查询好友信息
-         */
-        TeamFriend getFriendPhone(Map<String, Object> map);
-	
+       
 	
         
         

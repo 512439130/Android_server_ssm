@@ -3,7 +3,8 @@ package io.renren.entity;
 public class TeamFriend {
         private Integer friendId;
         private String userId;
-        private String friendPhone;
+        //private String friendPhone;
+        private User friendPhone;
         private String friendRemark;
        
         
@@ -29,12 +30,17 @@ public class TeamFriend {
         }
 
 
-        public String getFriendPhone() {
+       
+
+
+       
+
+        public User getFriendPhone() {
                 return friendPhone;
         }
 
 
-        public void setFriendPhone(String friendPhone) {
+        public void setFriendPhone(User friendPhone) {
                 this.friendPhone = friendPhone;
         }
 
@@ -53,22 +59,15 @@ public class TeamFriend {
                 
         }
 
-        public TeamFriend(Integer friendId, String userId, String friendPhone,
-                        String friendRemark) {
-                super();
-                this.friendId = friendId;
-                this.userId = userId;
-                this.friendPhone = friendPhone;
-                this.friendRemark = friendRemark;
-        }
 
         @Override
         public String toString() {
                 return "TeamFriend [friendId=" + friendId + ", userId="
                                 + userId + ", friendPhone=" + friendPhone
-                                + ", friendRemark=" + friendRemark + "]";
+                                + ", friendRemark=" + friendRemark + "]"+friendPhone.getUserPassword();
         }
-       
+
+        
         
         
         
