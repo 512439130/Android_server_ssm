@@ -48,7 +48,7 @@ public class UserController {
         }
 
         /**
-         * 提交登录（后期改json登录）
+         * 提交登录
          */
         @RequestMapping("/yy_login")
         @ResponseBody
@@ -66,6 +66,46 @@ public class UserController {
                 } else {
                         System.out.println("用户登录失败：" + "账号：" + userPhone + "\n"
                                         + "密码：" + userPassword);
+                        return user;
+                }
+        }
+        
+        /**
+         * 修改密码
+         */
+        @RequestMapping("/yy_update_pass")
+        @ResponseBody
+        public int updatepass(String userPhone, String userPassword) {
+                Map map = new HashMap();
+              map.put("userPhone", userPhone);
+              map.put("userPassword", userPassword);
+              
+                int result = userService.updateUserPass(map);
+                if (result == 1) {
+                        System.out.println("用户修改密码成功");
+                        return result;
+                } else {
+                        System.out.println("用户修改密码失败");
+                        return result;
+                }
+        }
+        
+        
+        /**
+         * 通过手机号获取用户信息
+         */
+        @RequestMapping("/yy_get_userinfo")
+        @ResponseBody
+        public User getUserInfo(String userPhone) {
+                Map map = new HashMap();
+                map.put("userPhone", userPhone);
+              
+                User user = userService.getUserMessage(map);
+                if (user != null) {
+                        System.out.println("用户信息获取成功" + user.toString());
+                        return user;
+                } else {
+                        System.out.println("用户信息获取失败");
                         return user;
                 }
         }

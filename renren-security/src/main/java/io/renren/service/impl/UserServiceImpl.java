@@ -27,6 +27,11 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
+        public User getUserMessage(Map<String, Object> map) {
+	        return userDao.queryUserMessage(map);
+        }
+	
+	@Override
 	@Transactional
 	public void registerService(User user) {
 
@@ -34,23 +39,17 @@ public class UserServiceImpl implements UserService {
 	}
 
         
-        
-        
-        
-        
-        
-        @Override
-        public User queryObject(Long userId) {
-                return userDao.queryObject(userId);
+	@Override
+        public int updateUserPass(Map<String, Object> map) {
+                int result = userDao.updateUserPass(map);
+                return result;
         }
+        
+        
+        
+	
 
-        @Override
-        public List<User> queryList(Map<String, Object> map){
-                return userDao.queryList(map);
-        }
         
-        @Override
-        public int queryTotal(Map<String, Object> map) {
-                return userDao.queryTotal(map);
-        }
+
+        
 }

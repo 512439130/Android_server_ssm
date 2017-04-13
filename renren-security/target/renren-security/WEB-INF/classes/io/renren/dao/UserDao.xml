@@ -8,6 +8,11 @@
 		select * from tb_user
 		where user_phone = #{userPhone} and user_password = #{userPassword}
 	</select>
+	
+	<select id="queryUserMessage"  resultType="io.renren.entity.User">
+        select * from tb_user
+        where user_phone = #{userPhone}
+    </select>
 
 	<insert id="register" parameterType="io.renren.entity.User"
 		useGeneratedKeys="true" keyProperty="userId">
@@ -31,46 +36,13 @@
 		)
 	</insert>
 	
-	<select id="getFriendPhone"  resultType="io.renren.entity.TeamFriend">
-        select * from tb_friend
-        where user_id = #{userId} 
-    </select>
 
-
-
-	<select id="queryObject" resultType="io.renren.entity.User">
-		select * from t_user where
-		user_id = #{value}
-	</select>
-	<select id="queryList" resultType="io.renren.entity.User">
-		select * from t_user order by user_id desc
-		<if test="offset != null and limit != null">
-			limit #{offset}, #{limit}
-		</if>
-	</select>
-
-	<insert id="save" parameterType="io.renren.entity.User"
-		useGeneratedKeys="true" keyProperty="userId">
-		insert into t_user
-		(
-		`phone`,
-		`password`
-		)
-		values
-		(
-		#{phone},
-		#{password}
-		)
-	</insert>
-
-
-	<update id="update" parameterType="io.renren.entity.User">
-		update t_user
+	<update id="updateUserPass" parameterType="io.renren.entity.User">
+		update tb_user
 		<set>
-			<if test="username != null">`username` = #{username}, </if>
-			<if test="password != null">`password` = #{password}, </if>
+			`user_password` = #{userPassword},
 		</set>
-		where user_id = #{userId}
+		where user_phone = #{userPhone}
 	</update>
 
 </mapper>

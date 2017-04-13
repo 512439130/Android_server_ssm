@@ -16,9 +16,14 @@ import io.renren.entity.User;
  */
 public interface UserDao extends BaseDao<User> {
 	/**
-	 * 根据用户名，查询系统用户
+	 * 根据手机号，查询用户Token
 	 */
 	User queryToken(Map<String, Object> map);
+	
+	/**
+         * 根据用户名，查询用户信息
+         */
+        User queryUserMessage(Map<String, Object> map);
 	
 	/**
 	 *注册
@@ -27,5 +32,9 @@ public interface UserDao extends BaseDao<User> {
 	
 	void register(User user);
 	
+	/**
+	 * 用户修改密码
+	 */
+	int updateUserPass(Map<String, Object> map);
 	
 }

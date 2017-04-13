@@ -8,38 +8,27 @@ import java.util.Map;
 
 public interface UserService {
 	/**
-	 * 根据用户名，查询系统用户
+	 * 根据手机号，查询用户Token
 	 */
 	User getUserToken(Map<String, Object> map);
 	
-	
+	/**
+         * 根据手机号，查询用户信息
+         */
+        User getUserMessage(Map<String, Object> map);
 	/**
          * 注册用户
          */
         void registerService(User user);
         
        
-	
+        /**
+         * 根据手机号，修改用户密码
+         */
+        int updateUserPass(Map<String, Object> map);
         
         
         
-	/**
-	 * 根据用户ID，查询用户
-	 * @param userId
-	 * @return
-	 */
-	User queryObject(Long userId);
-	
-	/**
-	 * 查询用户列表
-	 */
-	List<User> queryList(Map<String, Object> map);
-	
-	/**
-	 * 查询总数
-	 */
-	int queryTotal(Map<String, Object> map);
-	
 	
 
 }
