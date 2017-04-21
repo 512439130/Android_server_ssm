@@ -44,6 +44,12 @@ public class UserServiceImpl implements UserService {
                 int result = userDao.updateUserPass(map);
                 return result;
         }
+
+        @Override
+        public List<User> getAllUserMessage() {
+                // TODO Auto-generated method stub
+                return userDao.queryAllUserMessage();
+        }
         
         
         

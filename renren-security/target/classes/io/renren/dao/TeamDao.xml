@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.dao.TeamDao">
+
+	<select id="getTeamNews" resultMap="TeamNewsMap">
+		SELECT * FROM tb_news,tb_team,tb_user 
+		WHERE tb_team.team_id= tb_news.team_id 
+		AND tb_user.user_id = tb_team.team_president
+	</select>
+	<resultMap id="TeamNewsMap" type="io.renren.entity.TeamNews">
+        <id property="newsId" column="news_id"></id>
+        <result property="newsTitle" column="news_title" />
+        <result property="newsTime" column="news_time" />
+        <result property="newsContent" column="news_content" />
+        <result property="newsImage" column="news_image"/>
+        <association property="teamId" column="team_id" javaType="io.renren.entity.Team">
+            <id property="teamId" column="team_id" />
+            <result property="teamName" column="team_name" />
+            <result property="teamType" column="team_type" />
+            <result property="teamTime" column="team_time" />
+            <result property="teamImage" column="team_image"/>
+            <result property="teamIntroduce" column="team_introduce"/>
+            <association property="teamPresident" column="team_president" javaType="io.renren.entity.User">
+		            <id property="userId" column="user_id" />
+		            <result property="userPhone" column="user_phone" />
+		            <result property="userNickname" column="user_nickname" />
+		            <result property="userPassword" column="user_password" />
+		            <result property="userToken" column="user_token" />
+		            <result property="userImage" column="user_image" />
+		            <result property="userSex" column="user_sex" />
+            </association>
+        </association>
+    </resultMap>
+    
+</mapper>

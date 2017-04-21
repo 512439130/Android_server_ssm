@@ -37,4 +37,11 @@ public interface UserDao extends BaseDao<User> {
 	 */
 	int updateUserPass(Map<String, Object> map);
 	
+	/**
+         * 查询所有用户信息
+         */
+	List<User> queryAllUserMessage();
+	
+	
+	
 }

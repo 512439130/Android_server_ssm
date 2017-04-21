@@ -28,6 +28,12 @@ public interface UserService {
         int updateUserPass(Map<String, Object> map);
         
         
+        /**
+         * 查询所有用户的信息
+         */
+        List<User> getAllUserMessage();
+        
+        
         
 	
 

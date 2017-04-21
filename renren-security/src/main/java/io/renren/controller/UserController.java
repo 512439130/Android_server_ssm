@@ -109,4 +109,23 @@ public class UserController {
                         return user;
                 }
         }
+        
+        
+        
+        /**
+         * 获取全部的用户信息，提供搜索查询
+         */
+        @RequestMapping("/yy_get_alluserinfo")
+        @ResponseBody
+        public List<User> getAllUserInfo() {
+                
+                List<User> user = userService.getAllUserMessage();
+                if (user != null) {
+                        System.out.println("全部用户信息获取成功" );
+                        return user;
+                } else {
+                        System.out.println("全部用户信息获取失败");
+                        return user;
+                }
+        }
 }
