@@ -2,6 +2,7 @@ E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren
 E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\dao\FriendDao.java
 E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\utils\DateUtils.java
 E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\service\impl\FriendServiceImpl.java
+E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\entity\FriendRequest.java
 E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\entity\TeamFriend.java
 E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\utils\PageUtils.java
 E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\entity\User.java
@@ -17,4 +18,5 @@ E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren
 E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\entity\TeamNews.java
 E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\dao\TeamDao.java
 E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\dao\UserDao.java
+E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\entity\FriendRequestUser.java
 E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\entity\Team.java

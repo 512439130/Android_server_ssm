@@ -2,8 +2,10 @@ package io.renren.service.impl;
 
 import io.renren.dao.FriendDao;
 import io.renren.dao.UserDao;
+import io.renren.entity.FriendRequest;
 import io.renren.entity.TeamFriend;
 import io.renren.entity.User;
+import io.renren.entity.FriendRequestUser;
 import io.renren.service.FriendService;
 import io.renren.service.UserService;
 
@@ -30,10 +32,30 @@ public class FriendServiceImpl implements FriendService {
                 // TODO Auto-generated method stub
                 return  friendDao.getFriendPhone(map);
         }
-        
-        
-        
-        
-        
+
+        @Override
+        public int setFirendRequset(FriendRequest friendRequest) {
+                // TODO Auto-generated method stub
+               return friendDao.setFirendRequset(friendRequest);
+        }
+
+        @Override
+        public int operateFriendRequest(Map<String, Object> map) {
+                // TODO Auto-generated method stub
+              
+                return friendDao.operateFriendRequest(map);
+        }
+
+        @Override
+        public List<FriendRequestUser> getFriendRequest(Map<String, Object> map) {
+                // TODO Auto-generated method stub
+                return  friendDao.getFriendRequest(map);
+        }
+
+        @Override
+        public int addFriend(Map<String, Object> map) {
+                // TODO Auto-generated method stub
+                return friendDao.addFriend(map);
+        }
        
 }

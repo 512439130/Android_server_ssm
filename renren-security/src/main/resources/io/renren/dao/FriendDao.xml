@@ -22,5 +22,69 @@
             <result property="userSex" column="user_sex" />
 		</association>
 	</resultMap>
+	
+	
+	
+	<insert id="setFirendRequset" parameterType="io.renren.entity.FriendRequest">
+        insert into tb_friend_request
+        (
+        `request_phone`,
+        `receive_phone`,
+        `friend_state`
+        )
+        values
+        (
+        #{requestPhone},
+        #{receivePhone},
+        #{friendState}
+        )
+    </insert>
+    
+    
+    <update id="operateFriendRequest" parameterType="io.renren.entity.FriendRequest">
+        update tb_friend_request
+        <set>
+            `friend_state` = #{friendState},
+        </set>
+        where receive_phone = #{receivePhone} 
+        and request_phone = #{requestPhoneNumber}
+    </update>
+    
+    
+    <select id="getFriendRequest"  resultMap="FriendRequestMap">
+
+        SELECT *FROM tb_friend_request,tb_user 
+        WHERE tb_user.user_phone=tb_friend_request.request_phone 
+        AND receive_phone = #{receivePhone} and friend_state = #{friendState}
+        
+    </select>
+    <resultMap id="FriendRequestMap" type="io.renren.entity.FriendRequestUser">
+        <id property="friendrequestId" column="friendrequest_id"></id>
+        <result property="receivePhone" column="receive_phone" />
+        <result property="friendState" column="friend_state" />
+        <association property="requestPhone" column="request_phone" javaType="io.renren.entity.User">
+            <id property="userId" column="user_id" />
+            <result property="userPhone" column="user_phone" />
+            <result property="userNickname" column="user_nickname" />
+            <result property="userPassword" column="user_password" />
+            <result property="userToken" column="user_token" />
+            <result property="userImage" column="user_image" />
+            <result property="userSex" column="user_sex" />
+        </association>
+        
+    </resultMap>
+    
+    <insert id="addFriend">
+        insert into tb_friend
+        (
+        `user_id`,
+        `friend_phone`
+        )
+        values
+        (
+        #{userId},
+        #{friendPhone}
+        )
+    </insert>
 
 </mapper>
