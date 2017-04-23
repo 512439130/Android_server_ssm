@@ -3,7 +3,9 @@ package io.renren.service.impl;
 import io.renren.dao.FriendDao;
 import io.renren.dao.TeamDao;
 import io.renren.dao.UserDao;
+import io.renren.entity.Team;
 import io.renren.entity.TeamFriend;
+import io.renren.entity.TeamMember;
 import io.renren.entity.TeamNews;
 import io.renren.entity.User;
 import io.renren.service.FriendService;
@@ -30,6 +32,24 @@ public class TeamServiceImpl implements TeamService {
         public List<TeamNews> getTeamNews() {
                 // TODO Auto-generated method stub
                 return teamDao.getTeamNews();
+        }
+
+        @Override
+        public List<Team> getTeam() {
+                // TODO Auto-generated method stub
+                return teamDao.getTeam();
+        }
+
+        @Override
+        public int addTeam(Team team) {
+                // TODO Auto-generated method stub
+                return teamDao.addTeam(team);
+        }
+
+        @Override
+        public int addTeamMember(TeamMember teamMember) {
+                // TODO Auto-generated method stub
+                return teamDao.addTeamMember(teamMember);
         }
 
      
