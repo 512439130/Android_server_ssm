@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import io.renren.entity.FriendRequest;
+
 import io.renren.entity.TeamFriend;
 import io.renren.entity.User;
 import io.renren.entity.FriendRequestUser;
@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
+/**
+ * Created by yy on 2017/3/28.
+ */
 @Controller
 @RequestMapping("friend")
 public class FriendController {
@@ -54,10 +56,10 @@ public class FriendController {
          */
         @RequestMapping("/yy_friend_request")
         @ResponseBody
-        public int FriendRequestUser(@RequestBody FriendRequest friendRequest) {
+        public int FriendRequestUser(@RequestBody FriendRequestUser friendRequestUser) {
 
-                if (friendRequest != null) {
-                        int result = friendService.setFirendRequset(friendRequest);
+                if (friendRequestUser != null) {
+                        int result = friendService.setFirendRequset(friendRequestUser);
                         if (result == 1) {
                                 System.out.println("请求处理成功");
                                 return result;
@@ -78,11 +80,11 @@ public class FriendController {
          */
         @RequestMapping("/yy_operate_friendrequest")
         @ResponseBody
-        public int OperateFriendRequest(String requestPhoneNumber, String receivePhone,String friendState) {
+        public int OperateFriendRequest(String requestPhoneNumber, String receivePhone,String friendRequestState) {
               Map map = new HashMap();
               map.put("requestPhoneNumber", requestPhoneNumber);
               map.put("receivePhone", receivePhone);
-              map.put("friendState", friendState);
+              map.put("friendRequestState", friendRequestState);
               
                 int result = friendService.operateFriendRequest(map);
                 if (result == 1) {
@@ -101,10 +103,10 @@ public class FriendController {
          */
         @RequestMapping("/yy_obtain_friendrequest")
         @ResponseBody
-        public List<FriendRequestUser> getFriendRequest(String receivePhone,String friendState) {
+        public List<FriendRequestUser> getFriendRequest(String receivePhone,String friendRequestState) {
               Map map = new HashMap();
               map.put("receivePhone", receivePhone);
-              map.put("friendState", friendState);
+              map.put("friendRequestState", friendRequestState);
 
               List<FriendRequestUser> friendRequestUsers = friendService.getFriendRequest(map);
                 if (friendRequestUsers != null) {

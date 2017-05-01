@@ -1,6 +1,6 @@
 package io.renren.dao;
 
-import io.renren.entity.FriendRequest;
+
 import io.renren.entity.FriendRequestUser;
 import io.renren.entity.TeamFriend;
 
@@ -18,7 +18,7 @@ public interface FriendDao  {
           * 发送好友请求
           * 
           */
-         int setFirendRequset(FriendRequest friendRequest);
+         int setFirendRequset(FriendRequestUser friendRequestUser);
          
          /**
           * 处理好友请求

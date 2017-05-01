@@ -43,5 +43,11 @@ public interface UserDao extends BaseDao<User> {
 	List<User> queryAllUserMessage();
 	
 	
+	/**
+         * 根据手机号，修改用户头像
+         */
+        int updateUserImage(Map<String, Object> map);
+	
+	
 	
 }

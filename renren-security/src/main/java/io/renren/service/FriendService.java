@@ -1,6 +1,6 @@
 package io.renren.service;
 
-import io.renren.entity.FriendRequest;
+
 import io.renren.entity.FriendRequestUser;
 import io.renren.entity.TeamFriend;
 import io.renren.entity.User;
@@ -21,7 +21,7 @@ public interface FriendService {
         /**
          * 发送好友请求
          */
-        int setFirendRequset(FriendRequest friendRequest);
+        int setFirendRequset(FriendRequestUser friendRequestUser);
 	
 	
         /**

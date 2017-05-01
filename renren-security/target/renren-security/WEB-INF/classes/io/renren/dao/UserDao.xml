@@ -49,5 +49,14 @@
 	<select id="queryAllUserMessage"  resultType="io.renren.entity.User">
         select * from tb_user
     </select>
+    
+    
+    <update id="updateUserImage" parameterType="io.renren.entity.User">
+        update tb_user
+        <set>
+            `user_image` = #{userImage},
+        </set>
+        where user_phone = #{userPhone}
+    </update>
 
 </mapper>

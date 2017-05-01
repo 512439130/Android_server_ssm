@@ -20,7 +20,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 /**
- * Created by jack on 2017/3/28.
+ * Created by yy on 2017/3/28.
  */
 @Controller
 @RequestMapping("user")
@@ -128,4 +128,27 @@ public class UserController {
                         return user;
                 }
         }
+        
+        
+        /**
+         * 跟换用户头像
+         */
+        @RequestMapping("/yy_update_userImage")
+        @ResponseBody
+        public int updateUserImage(String userPhone, String userImage) {
+              Map map = new HashMap();
+              map.put("userPhone", userPhone);
+              map.put("userImage", userImage);
+              
+                int result = userService.updateUserImage(map);
+                if (result == 1) {
+                        System.out.println("用户头像更换成功");
+                        return result;
+                } else {
+                        System.out.println("用户头像更换失败");
+                        return result;
+                }
+        }
+        
+        
 }

@@ -4,7 +4,8 @@ public class FriendRequestUser {
         private Integer friendrequestId;
         private User requestPhone;
         private String receivePhone;
-        private String friendState;
+        private String friendRequestReason;
+        private String friendRequestState;
         
        
         
@@ -27,11 +28,18 @@ public class FriendRequestUser {
         public void setReceivePhone(String receivePhone) {
                 this.receivePhone = receivePhone;
         }
-        public String getFriendState() {
-                return friendState;
+        public String getFriendRequestReason() {
+                return friendRequestReason;
         }
-        public void setFriendState(String friendState) {
-                this.friendState = friendState;
+        public void setFriendRequestReason(String friendRequestReason) {
+                this.friendRequestReason = friendRequestReason;
         }
+        public String getFriendRequestState() {
+                return friendRequestState;
+        }
+        public void setFriendRequestState(String friendRequestState) {
+                this.friendRequestState = friendRequestState;
+        }
+       
 
 }

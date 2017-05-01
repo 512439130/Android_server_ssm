@@ -25,18 +25,20 @@
 	
 	
 	
-	<insert id="setFirendRequset" parameterType="io.renren.entity.FriendRequest">
+	<insert id="setFirendRequset" parameterType="io.renren.entity.FriendRequestUser">
         insert into tb_friend_request
         (
         `request_phone`,
         `receive_phone`,
-        `friend_state`
+        `friend_request_reason`,
+        `friend_request_state`
         )
         values
         (
-        #{requestPhone},
+        #{requestPhone.userPhone},
         #{receivePhone},
-        #{friendState}
+        #{friendRequestReason},
+        #{friendRequestState}
         )
     </insert>
     
@@ -44,7 +46,7 @@
     <update id="operateFriendRequest" parameterType="io.renren.entity.FriendRequest">
         update tb_friend_request
         <set>
-            `friend_state` = #{friendState},
+            `friend_request_state` = #{friendRequestState},
         </set>
         where receive_phone = #{receivePhone} 
         and request_phone = #{requestPhoneNumber}
@@ -55,13 +57,14 @@
 
         SELECT *FROM tb_friend_request,tb_user 
         WHERE tb_user.user_phone=tb_friend_request.request_phone 
-        AND receive_phone = #{receivePhone} and friend_state = #{friendState}
+        AND receive_phone = #{receivePhone} and friend_request_state = #{friendRequestState}
         
     </select>
     <resultMap id="FriendRequestMap" type="io.renren.entity.FriendRequestUser">
         <id property="friendrequestId" column="friendrequest_id"></id>
         <result property="receivePhone" column="receive_phone" />
-        <result property="friendState" column="friend_state" />
+        <result property="friendRequestReason" column="friend_request_reason" />
+        <result property="friendRequestState" column="friend_request_state" />
         <association property="requestPhone" column="request_phone" javaType="io.renren.entity.User">
             <id property="userId" column="user_id" />
             <result property="userPhone" column="user_phone" />

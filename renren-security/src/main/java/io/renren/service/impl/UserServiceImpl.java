@@ -41,14 +41,17 @@ public class UserServiceImpl implements UserService {
         
 	@Override
         public int updateUserPass(Map<String, Object> map) {
-                int result = userDao.updateUserPass(map);
-                return result;
+                return userDao.updateUserPass(map);
         }
 
         @Override
         public List<User> getAllUserMessage() {
-                // TODO Auto-generated method stub
                 return userDao.queryAllUserMessage();
+        }
+
+        @Override
+        public int updateUserImage(Map<String, Object> map) {
+                return userDao.updateUserImage(map);
         }
         
         

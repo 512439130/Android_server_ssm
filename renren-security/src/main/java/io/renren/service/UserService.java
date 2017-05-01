@@ -34,6 +34,11 @@ public interface UserService {
         List<User> getAllUserMessage();
         
         
+        /**
+         * 根据手机号，修改用户头像
+         */
+        int updateUserImage(Map<String, Object> map);
+        
         
 	
 
