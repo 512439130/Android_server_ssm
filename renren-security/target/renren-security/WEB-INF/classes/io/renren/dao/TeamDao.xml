@@ -6,9 +6,11 @@
 	<select id="getTeamNews" resultMap="TeamNewsMap">
 		SELECT * FROM
 		tb_news,tb_team,tb_user
-		WHERE tb_team.team_id= tb_news.team_id AND tb_team.team_president = tb_user.user_id
+		WHERE tb_team.team_id= tb_news.team_id AND
+		tb_team.team_president = tb_user.user_id
 		AND
-		tb_user.user_id = tb_team.team_president
+		tb_user.user_id =
+		tb_team.team_president
 	</select>
 	<resultMap id="TeamNewsMap" type="io.renren.entity.TeamNews">
 		<id property="newsId" column="news_id"></id>
@@ -16,14 +18,16 @@
 		<result property="newsTime" column="news_time" />
 		<result property="newsContent" column="news_content" />
 		<result property="newsImage" column="news_image" />
-		<association property="teamId" column="team_id" javaType="io.renren.entity.Team">
+		<association property="teamId" column="team_id"
+			javaType="io.renren.entity.Team">
 			<id property="teamId" column="team_id" />
 			<result property="teamName" column="team_name" />
 			<result property="teamType" column="team_type" />
 			<result property="teamTime" column="team_time" />
 			<result property="teamImage" column="team_image" />
 			<result property="teamIntroduce" column="team_introduce" />
-			<association property="teamPresident" column="team_president" javaType="io.renren.entity.User">
+			<association property="teamPresident" column="team_president"
+				javaType="io.renren.entity.User">
 				<id property="userId" column="user_id" />
 				<result property="userPhone" column="user_phone" />
 				<result property="userNickname" column="user_nickname" />
@@ -36,7 +40,8 @@
 	</resultMap>
 
 	<select id="getTeam" resultMap="TeamMap">
-		SELECT * FROM tb_team,tb_user where tb_team.team_president = tb_user.user_id
+		SELECT * FROM tb_team,tb_user
+		where tb_team.team_president = tb_user.user_id
 	</select>
 	<resultMap id="TeamMap" type="io.renren.entity.Team">
 		<id property="teamId" column="team_id" />
@@ -56,47 +61,69 @@
 			<result property="userSex" column="user_sex" />
 		</association>
 	</resultMap>
-	
-	
-	
+
+
+
 	<insert id="addTeam" parameterType="io.renren.entity.Team"
-	useGeneratedKeys="true" keyProperty="teamId">
-        insert into tb_team
-        (
-        `team_name`,
-        `team_type`,
-        `team_president`,
-         `team_time`,
-        `team_image`,
-        `team_introduce`
-        )
-        values
-        (  
-        #{teamName},
-        #{teamType},
-        #{teamPresident.userId},
-        #{teamTime},
-        #{teamImage},
-        #{teamIntroduce}
-        )
-    </insert>
-    
-    <insert id="addTeamMember" parameterType="io.renren.entity.TeamMember"
-    useGeneratedKeys="true" keyProperty="teamMemberId">
-        insert into tb_team_member
-        (
-        `user_id`,
-        `team_id`,
-        `team_member_position`,
-        `team_member_join_time`
-        )
-        values
-        (  
-        #{userId.userId},
-        #{teamId.teamId},
-        #{teamMemberPosition},
-        #{teamMemberJoin}
-        )
-    </insert>
+		useGeneratedKeys="true" keyProperty="teamId">
+		insert into tb_team
+		(
+		`team_name`,
+		`team_type`,
+		`team_president`,
+		`team_time`,
+		`team_image`,
+		`team_introduce`
+		)
+		values
+		(
+		#{teamName},
+		#{teamType},
+		#{teamPresident.userId},
+		#{teamTime},
+		#{teamImage},
+		#{teamIntroduce}
+		)
+	</insert>
+
+	<insert id="addTeamMember" parameterType="io.renren.entity.TeamMember"
+		useGeneratedKeys="true" keyProperty="teamMemberId">
+		insert into tb_team_member
+		(
+		`user_id`,
+		`team_id`,
+		`team_member_position`,
+		`team_member_join_time`
+		)
+		values
+		(
+		#{userId.userId},
+		#{teamId.teamId},
+		#{teamMemberPosition},
+		#{teamMemberJoinTime}
+		)
+	</insert>
+
+
+
+	<select id="getTeamByUserId" resultMap="TeamMemberMap">
+		SELECT * FROM tb_team_member,tb_team
+		WHERE tb_team_member.`team_id` = tb_team.`team_id`
+		AND user_id = #{userId};
+	</select>
+
+	<resultMap id="TeamMemberMap" type="io.renren.entity.TeamMember">
+		<id property="teamMemberId" column="team_member_id" />
+		<result property="teamMemberPosition" column="team_member_position" />
+		<result property="teamMemberJoinTime" column="team_member_join_time" />
+		<association property="teamId" column="team_id" javaType="io.renren.entity.Team">
+			<id property="teamId" column="team_id" />
+			<result property="teamName" column="team_name" />
+			<result property="teamType" column="team_type" />
+			<result property="teamTime" column="team_time" />
+			<result property="teamImage" column="team_image" />
+			<result property="teamIntroduce" column="team_introduce" />
+		</association>
+	</resultMap>
 
 </mapper>

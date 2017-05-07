@@ -43,7 +43,7 @@
     </insert>
     
     
-    <update id="operateFriendRequest" parameterType="io.renren.entity.FriendRequest">
+    <update id="operateFriendRequest" parameterType="io.renren.entity.FriendRequestUser">
         update tb_friend_request
         <set>
             `friend_request_state` = #{friendRequestState},

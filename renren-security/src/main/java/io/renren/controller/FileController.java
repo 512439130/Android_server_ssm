@@ -36,9 +36,9 @@ public class FileController {
          * @throws IllegalStateException 
          */
         @RequestMapping("/yy_upload_file")
-        public String uploadFile(@RequestParam("image") CommonsMultipartFile file)throws IllegalStateException, IOException {
-                if (file != null) {
-                        boolean result = fileService.uploadFile(file);
+        public String uploadFile(@RequestParam("image") CommonsMultipartFile file,String serverPath)throws IllegalStateException, IOException {
+                if (file != null && serverPath != null) {
+                        boolean result = fileService.uploadFile(file,serverPath);
                         if(result){
                                 return "上传成功";   
                         }else{

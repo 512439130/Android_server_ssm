@@ -31,5 +31,11 @@ public interface TeamService {
          * 加入社团成员
          */
         int addTeamMember(TeamMember teamMember);
+        
+        
+        /**
+         * 根据user_id，查询社团信息
+         */
+        TeamMember getTeamByUserId(Map<String, Object> map);
 	
 }

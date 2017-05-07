@@ -24,6 +24,6 @@ public interface FileService {
          * @throws IllegalStateException 
          */
 
-        boolean uploadFile(CommonsMultipartFile file)throws IllegalStateException, IOException;
+        boolean uploadFile(CommonsMultipartFile file,String serverPath)throws IllegalStateException, IOException;
 	
 }

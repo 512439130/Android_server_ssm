@@ -121,7 +121,7 @@ public class FriendController {
         
         
         /**
-         * 添加好友到好友
+         * 添加好友到好友列表
          * 
          * http://localhost:8080/renren-security/friend/yy_add_friend?userId=13160677911&friendPhone=13192259530
          */

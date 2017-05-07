@@ -18,9 +18,9 @@ import io.renren.service.FileService;
 public class FileServiceImpl implements FileService {
 
         @Override
-        public boolean uploadFile(CommonsMultipartFile file) throws IllegalStateException, IOException  {
+        public boolean uploadFile(CommonsMultipartFile file,String serverPath) throws IllegalStateException, IOException  {
   
-                String path="C:/websoft/image/"+file.getOriginalFilename();
+                String path=serverPath+file.getOriginalFilename();
                 System.out.println(path);
                 File newFile=new File(path);
                 //通过CommonsMultipartFile的方法直接写文件（注意这个时候）

@@ -7,7 +7,7 @@ public class TeamMember {
         private User userId;
         private Team teamId;
         private String teamMemberPosition;
-        private Date teamMemberJoin;
+        private Date teamMemberJoinTime;
         public Integer getTeamMemberId() {
                 return teamMemberId;
         }
@@ -32,12 +32,13 @@ public class TeamMember {
         public void setTeamMemberPosition(String teamMemberPosition) {
                 this.teamMemberPosition = teamMemberPosition;
         }
-        public Date getTeamMemberJoin() {
-                return teamMemberJoin;
+        public Date getTeamMemberJoinTime() {
+                return teamMemberJoinTime;
         }
-        public void setTeamMemberJoin(Date teamMemberJoin) {
-                this.teamMemberJoin = teamMemberJoin;
+        public void setTeamMemberJoinTime(Date teamMemberJoinTime) {
+                this.teamMemberJoinTime = teamMemberJoinTime;
         }
+        
         
         
         

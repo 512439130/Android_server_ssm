@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.dao.TeamMemberDao">
+
+	<insert id="setTeamMemberRequset" parameterType="io.renren.entity.TeamMemberRequest">
+		insert into tb_team_member_request
+		(
+		`request_id`,
+		`receive_id`,
+		`team_member_request_reason`,
+		`team_member_request_state`
+		)
+		values
+		(
+		#{requestId.userId},
+		#{receiveId},
+		#{teamMemberRequestReason},
+		#{teamMemberRequestState}
+		)
+	</insert>
+
+
+	<update id="operateTeamMemberRequest" parameterType="io.renren.entity.TeamMemberRequest">
+		update tb_team_member_request
+		<set>
+			`team_member_request_state` = #{teamMemberRequestState},
+		</set>
+		where receive_id = #{receiveTeamId}
+		and request_id = #{requestUserId}
+	</update>
+
+	<select id="getTeamMemberRequest" resultMap="TeamMemberRequestMap">
+		SELECT * FROM tb_team_member_request,tb_user
+		WHERE tb_user.user_id=tb_team_member_request.request_id
+		AND receive_id = #{receiveId} and team_member_request_state =
+		#{teamMemberRequestState}
+	</select>
+	<resultMap id="TeamMemberRequestMap" type="io.renren.entity.TeamMemberRequest">
+		<id property="teamMemberRequestId" column="team_member_request_id"></id>
+		<result property="receiveId" column="receive_id" />
+		<result property="teamMemberRequestReason" column="team_member_request_reason" />
+		<result property="teamMemberRequestState" column="team_member_request_state" />
+		<association property="requestId" column="request_id"
+			javaType="io.renren.entity.User">
+			<id property="userId" column="user_id" />
+			<result property="userPhone" column="user_phone" />
+			<result property="userNickname" column="user_nickname" />
+			<result property="userPassword" column="user_password" />
+			<result property="userToken" column="user_token" />
+			<result property="userImage" column="user_image" />
+			<result property="userSex" column="user_sex" />
+		</association>
+
+	</resultMap>
+
+
+
+	<select id="getTeamMember" resultMap="TeamMemberMap">
+		SELECT * FROM tb_team_member,tb_user,tb_team
+		WHERE tb_team_member.`user_id` = tb_user.`user_id`
+		AND tb_team_member.`team_id` = tb_team.`team_id`
+		AND tb_team_member.team_id = #{teamId};
+	</select>
+	<resultMap id="TeamMemberMap" type="io.renren.entity.TeamMember">
+		<id property="teamMemberId" column="team_member_id"></id>
+		<result property="teamMemberPosition" column="team_member_position" />
+		<result property="teamMemberJoinTime" column="team_member_join_time" />
+		<association property="userId" column="user_id" javaType="io.renren.entity.User">
+			<id property="userId" column="user_id" />
+			<result property="userPhone" column="user_phone" />
+			<result property="userNickname" column="user_nickname" />
+			<result property="userPassword" column="user_password" />
+			<result property="userToken" column="user_token" />
+			<result property="userImage" column="user_image" />
+			<result property="userSex" column="user_sex" />
+		</association>
+		<association property="teamId" column="team_id" javaType="io.renren.entity.Team">
+			<id property="teamId" column="team_id" />
+			<result property="teamName" column="team_name" />
+			<result property="teamType" column="team_type" />
+			<result property="teamTime" column="team_time" />
+			<result property="teamImage" column="team_image" />
+			<result property="teamIntroduce" column="team_introduce" />
+		</association>
+	</resultMap>
+
+
+
+</mapper>

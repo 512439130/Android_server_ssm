@@ -52,6 +52,12 @@ public class TeamServiceImpl implements TeamService {
                 return teamDao.addTeamMember(teamMember);
         }
 
+        @Override
+        public TeamMember getTeamByUserId(Map<String, Object> map) {
+                // TODO Auto-generated method stub
+                return teamDao.getTeamByUserId(map);
+        }
+
      
 
 	

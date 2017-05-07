@@ -1,5 +1,6 @@
+E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\service\TeamMemberService.java
+E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\controller\TeamMemberController.java
 E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\service\impl\FriendServiceImpl.java
-E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\entity\FriendRequest.java
 E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\utils\DateUtils.java
 E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\utils\DateUtil.java
 E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\entity\User.java
@@ -7,6 +8,7 @@ E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren
 E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\controller\FriendController.java
 E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\controller\UserController.java
 E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\service\impl\UserServiceImpl.java
+E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\entity\TeamMemberRequest.java
 E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\service\impl\FileServiceImpl.java
 E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\service\TeamService.java
 E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\service\FileService.java
@@ -20,8 +22,10 @@ E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren
 E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\utils\PageUtils.java
 E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\service\FriendService.java
 E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\service\UserService.java
-E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\utils\SpringContextUtils.java
 E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\controller\TeamController.java
+E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\utils\SpringContextUtils.java
 E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\entity\TeamMember.java
 E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\dao\UserDao.java
+E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\dao\TeamMemberDao.java
 E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\dao\TeamDao.java
+E:\work\software\git_workspace\server_yy\renren-security\src\main\java\io\renren\service\impl\TeamMemberServiceImpl.java
