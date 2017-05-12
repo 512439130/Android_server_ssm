@@ -46,6 +46,34 @@ public class TeamController {
                         return teamNews;
                 }
         }
+        
+        
+        /**
+         * 发布社团新闻
+         * http://localhost:8080/renren-security/team/yy_add_team_news?Json=(
+         * 
+         */
+        @RequestMapping("/yy_add_team_news")
+        @ResponseBody
+        public int AddTeamNews(@RequestBody TeamNews teamNews) {
+
+                if (teamNews != null) {
+                        int result = teamService.addTeamNews(teamNews);
+                        if (result == 1) {
+                                System.out.println("发布社团新闻请求处理成功");
+                                return result;
+                        } else {
+                                System.out.println("发布社团新闻请求处理失败");
+                                return result;
+                        }
+                } else {
+                        return 3; // 3表示请求参数为空
+                }
+
+        }
+        
+        
+        
 
         /**
          * 查询所有社团 http://localhost:8080/renren-security/team/yy_obtain_team
@@ -133,20 +161,49 @@ public class TeamController {
         }
 
         /**
-         * 查询我的社团的编号
+         * 查询我的所有社团
          * http://localhost:8080/renren-security/team/yy_obtain_team?userId=2
          */
         @RequestMapping("/yy_obtain_team_byuser")
         @ResponseBody
-        public TeamMember getTeamByUserId(String userId) {
+        public List<TeamMember> getTeamByUserId(String userId) {
                 Map map = new HashMap();
                 map.put("userId", userId);
-                TeamMember teamMember = teamService.getTeamByUserId(map);
-               if(teamMember != null){
-                       System.out.println("社团信息获取成功"+teamMember.toString());
+                List<TeamMember> teamMembers = teamService.getTeamByUserId(map);
+               if(teamMembers != null){
+                       System.out.println("社团信息获取成功"+teamMembers.toString());
                }else{
                        System.out.println("社团信息获取失败");
                }
-                return teamMember;
+                return teamMembers;
         }
+        
+        
+        /**
+         * 完善社团信息
+         * http://localhost:8080/renren-security/team/yy_update_teamInfo?Json=(
+         * 
+         */
+        @RequestMapping("/yy_update_teamInfo")
+        @ResponseBody
+        public int UpdateTeamInfo(@RequestBody Team team) {
+
+                if (team != null) {
+                        int result = teamService.updateTeamInfo(team);
+                        if (result == 1) {
+                                System.out.println("完善社团信息请求处理成功");
+                                return result;
+                        } else {
+                                System.out.println("完善社团信息请求处理失败");
+                                return result;
+                        }
+                } else {
+                        return 3; // 3表示请求参数为空
+                }
+
+        }
+        
+        
+        
+        
 }

@@ -18,8 +18,7 @@
 		<result property="newsTime" column="news_time" />
 		<result property="newsContent" column="news_content" />
 		<result property="newsImage" column="news_image" />
-		<association property="teamId" column="team_id"
-			javaType="io.renren.entity.Team">
+		<association property="teamId" column="team_id" javaType="io.renren.entity.Team">
 			<id property="teamId" column="team_id" />
 			<result property="teamName" column="team_name" />
 			<result property="teamType" column="team_type" />
@@ -38,7 +37,28 @@
 			</association>
 		</association>
 	</resultMap>
-
+	
+	
+	<insert id="addTeamNews" parameterType="io.renren.entity.TeamNews"
+        useGeneratedKeys="true" keyProperty="newsId">
+        insert into tb_news
+        (
+        `team_id`,
+        `news_title`,
+        `news_time`,
+        `news_content`,
+        `news_image`
+        )
+        values
+        (
+        #{teamId.teamId},
+        #{newsTitle},
+        #{newsTime},
+        #{newsContent},
+        #{newsImage}
+        )
+    </insert>
+	
 	<select id="getTeam" resultMap="TeamMap">
 		SELECT * FROM tb_team,tb_user
 		where tb_team.team_president = tb_user.user_id
@@ -126,4 +146,21 @@
 		</association>
 	</resultMap>
 
+
+
+    <update id="updateTeamInfo" parameterType="io.renren.entity.Team">
+        update tb_team
+        <set>
+            `team_name` = #{teamName},
+            `team_type` = #{teamType},
+            `team_president` = #{teamPresident.userId},
+            `team_time` = #{teamTime},
+            `team_image` = #{teamImage},
+            `team_introduce` = #{teamIntroduce}
+        </set>
+        where team_id = #{teamId}
+    </update>
+    
+
+    
 </mapper>

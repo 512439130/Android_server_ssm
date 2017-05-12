@@ -58,5 +58,15 @@
         </set>
         where user_phone = #{userPhone}
     </update>
+    
+    
+    <update id="updateUserInfo" parameterType="io.renren.entity.User">
+        update tb_user
+        <set>
+            `user_nickname` = #{userNickname},
+            `user_sex` = #{userSex}
+        </set>
+        where user_id = #{userId}
+    </update>
 
 </mapper>

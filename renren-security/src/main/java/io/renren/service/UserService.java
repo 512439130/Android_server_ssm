@@ -1,5 +1,6 @@
 package io.renren.service;
 
+import io.renren.entity.Team;
 import io.renren.entity.TeamFriend;
 import io.renren.entity.User;
 
@@ -38,6 +39,14 @@ public interface UserService {
          * 根据手机号，修改用户头像
          */
         int updateUserImage(Map<String, Object> map);
+        
+        
+        
+        
+        /**
+         * 完善社团信息
+         */
+        int updateUserInfo(User user);
         
         
 	

@@ -16,6 +16,11 @@ public interface TeamDao  {
          List<TeamNews> getTeamNews();
          
          /**
+          * 发布社团新闻
+          */
+         int addTeamNews(TeamNews teamNews);
+         
+         /**
           * 获取所有社团
           */
          List<Team> getTeam();
@@ -34,5 +39,10 @@ public interface TeamDao  {
          /**
           * 根据user_id，查询社团信息
           */
-         TeamMember getTeamByUserId(Map<String, Object> map);
+         List<TeamMember> getTeamByUserId(Map<String, Object> map);
+         
+         /**
+          * 完善社团信息
+          */
+         int updateTeamInfo(Team team);
 }

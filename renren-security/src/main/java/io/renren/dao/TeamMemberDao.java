@@ -1,5 +1,6 @@
 package io.renren.dao;
 
+import io.renren.entity.TaskMember;
 import io.renren.entity.Team;
 import io.renren.entity.TeamFriend;
 import io.renren.entity.TeamMember;
@@ -32,4 +33,12 @@ public interface TeamMemberDao  {
          * 根据team_id，查询社团请求列表
          */
         List<TeamMember> getTeamMember(Map<String, Object> map);
+        
+        /**
+         * 查询负责人的信息
+         * @param map
+         * @return
+         */
+        TeamMember getTeamMemberByResponsible(Map<String, Object> map);
+       
 }

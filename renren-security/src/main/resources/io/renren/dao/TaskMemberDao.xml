@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.dao.TaskMemberDao">
+
+	<insert id="setTaskMemberRequset" parameterType="io.renren.entity.TaskMemberRequest">
+		insert into
+		tb_task_member_request
+		(
+		`request_id`,
+		`receive_id`,
+		`task_member_request_reason`,
+		`task_member_request_state`
+		)
+		values
+		(
+		#{requestId.userId},
+		#{receiveId},
+		#{taskMemberRequestReason},
+		#{taskMemberRequestState}
+		)
+	</insert>
+
+
+	<update id="operateTaskMemberRequest" parameterType="io.renren.entity.TaskMemberRequest">
+		update tb_task_member_request
+		<set>
+			`task_member_request_state` = #{taskMemberRequestState}
+		</set>
+		where receive_id = #{receiveTaskId}
+		and request_id = #{requestUserId}
+	</update>
+
+	<select id="getTaskMemberRequest" resultMap="TaskMemberRequestMap">
+		SELECT * FROM
+		tb_task_member_request,tb_user
+		WHERE
+		tb_user.user_id=tb_task_member_request.request_id
+		AND receive_id =
+		#{receiveId} and task_member_request_state =
+		#{taskMemberRequestState}
+	</select>
+	<resultMap id="TaskMemberRequestMap" type="io.renren.entity.TaskMemberRequest">
+		<id property="taskMemberRequestId" column="task_member_request_id"></id>
+		<result property="receiveId" column="receive_id" />
+		<result property="taskMemberRequestReason" column="task_member_request_reason" />
+		<result property="taskMemberRequestState" column="task_member_request_state" />
+		<association property="requestId" column="request_id"
+			javaType="io.renren.entity.User">
+			<id property="userId" column="user_id" />
+			<result property="userPhone" column="user_phone" />
+			<result property="userNickname" column="user_nickname" />
+			<result property="userPassword" column="user_password" />
+			<result property="userToken" column="user_token" />
+			<result property="userImage" column="user_image" />
+			<result property="userSex" column="user_sex" />
+		</association>
+
+	</resultMap>
+
+
+
+	<select id="getTaskMember" resultMap="TaskMemberMap">
+		SELECT * FROM
+		tb_task_member,tb_user,tb_task
+		WHERE tb_task_member.`user_id` =
+		tb_user.`user_id`
+		AND tb_task_member.`task_id` = tb_task.`task_id`
+		AND
+		tb_task_member.task_id = #{taskId};
+	</select>
+	<resultMap id="TaskMemberMap" type="io.renren.entity.TaskMember">
+		<id property="taskMemberId" column="task_member_id"></id>
+		<result property="taskMemberJoinTime" column="task_member_join_time" />
+		<association property="userId" column="user_id" javaType="io.renren.entity.User">
+			<id property="userId" column="user_id" />
+			<result property="userPhone" column="user_phone" />
+			<result property="userNickname" column="user_nickname" />
+			<result property="userPassword" column="user_password" />
+			<result property="userToken" column="user_token" />
+			<result property="userImage" column="user_image" />
+			<result property="userSex" column="user_sex" />
+		</association>
+		<association property="taskId" column="task_id" javaType="io.renren.entity.TeamTask">
+			<id property="taskId" column="task_id" />
+			<result property="taskTitle" column="task_title" />
+			<result property="taskContent" column="task_content" />
+			<result property="taskReleaseId" column="task_release_id" />
+			<result property="taskState" column="task_state" />
+			<result property="taskMaxNumber" column="task_max_number" />
+			<result property="taskCreateTime" column="task_create_time" />
+			<result property="taskSummary" column="task_summary" />
+		</association>
+	</resultMap>
+	
+	<insert id="addTaskMember" parameterType="io.renren.entity.TaskMember"
+        useGeneratedKeys="true" keyProperty="taskMemberId">
+        insert into tb_task_member
+        (
+        `user_id`,
+        `task_id`,
+        `task_member_join_time`
+        )
+        values
+        (
+        #{userId.userId},
+        #{taskId.taskId},
+        #{taskMemberJoinTime}
+        )
+    </insert>
+
+    <select id="getTaskByUserId" resultMap="TaskMap">
+        SELECT * FROM tb_task_member,tb_task,tb_team_member,tb_team,tb_user 
+        WHERE tb_task_member.`task_id` = tb_task.`task_id`
+        AND tb_task.`task_responsible_id` = tb_team_member.`team_member_id` 
+        AND tb_team_member.`team_id` = tb_team.`team_id`
+        AND tb_team_member.`user_id` = tb_user.`user_id` AND tb_task_member.user_id = #{userId};
+    </select>
+
+    <resultMap id="TaskMap" type="io.renren.entity.TaskMember">
+        <id property="taskMemberId" column="task_member_id" />
+        <result property="taskMemberJoinTime" column="task_member_join_time" />
+        <association property="taskId" column="task_id" javaType="io.renren.entity.TeamTask">
+            <id property="taskId" column="task_id" />
+            <result property="taskTitle" column="task_title" />
+            <result property="taskContent" column="task_content" />
+            <result property="taskReleaseId" column="task_release_id" />
+            <result property="taskState" column="task_state" />
+            <result property="taskMaxNumber" column="task_max_number" />
+            <result property="taskCreateTime" column="task_create_time" />
+            <result property="taskSummary" column="task_summary" />
+            <association property="taskResponsibleId" column="task_responsible_id" javaType="io.renren.entity.TeamMember">
+	            <id property="teamMemberId" column="team_member_id"></id>
+	            <association property="teamId" column="team_id" javaType="io.renren.entity.Team">
+	                <id property="teamId" column="team_id" />
+	                <result property="teamName" column="team_name" />
+	                <result property="teamImage" column="team_image" />
+	            </association>
+	            <association property="userId" column="user_id" javaType="io.renren.entity.User">
+	                    <result property="userNickname" column="user_nickname" />
+	             </association>
+	        </association>
+        </association>
+        
+        
+    </resultMap>
+    
+    
+    <select id="getCountByTaskId" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM tb_task_member WHERE task_id = #{taskId};
+    </select>
+</mapper>

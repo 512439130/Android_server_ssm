@@ -1,6 +1,7 @@
 package io.renren.service.impl;
 
 import io.renren.dao.UserDao;
+import io.renren.entity.Team;
 import io.renren.entity.TeamFriend;
 import io.renren.entity.User;
 import io.renren.service.UserService;
@@ -52,6 +53,12 @@ public class UserServiceImpl implements UserService {
         @Override
         public int updateUserImage(Map<String, Object> map) {
                 return userDao.updateUserImage(map);
+        }
+
+        @Override
+        public int updateUserInfo(User user) {
+                // TODO Auto-generated method stub
+                return userDao.updateUserInfo(user);
         }
         
         

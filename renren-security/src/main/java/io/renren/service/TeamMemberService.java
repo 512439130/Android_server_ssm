@@ -36,5 +36,10 @@ public interface TeamMemberService {
         List<TeamMember> getTeamMember(Map<String, Object> map);
         
        
-
+        /**
+         * 查询负责人的信息
+         * @param map
+         * @return
+         */
+        TeamMember getTeamMemberByResponsible(Map<String, Object> map);
 }

@@ -84,6 +84,38 @@
 			<result property="teamIntroduce" column="team_introduce" />
 		</association>
 	</resultMap>
+	
+	
+	
+	<select id="getTeamMemberByResponsible" resultMap="TeamMemberByResponsibleMap">
+        SELECT * FROM tb_team_member,tb_user,tb_team 
+        WHERE tb_team_member.`user_id` = tb_user.`user_id` 
+         AND tb_team_member.`team_id` = tb_team.`team_id` 
+         AND tb_team_member.user_id = #{userId} 
+         AND tb_team_member.`team_id` = #{teamId}; 
+    </select>
+    <resultMap id="TeamMemberByResponsibleMap" type="io.renren.entity.TeamMember">
+        <id property="teamMemberId" column="team_member_id"></id>
+        <result property="teamMemberPosition" column="team_member_position" />
+        <result property="teamMemberJoinTime" column="team_member_join_time" />
+        <association property="userId" column="user_id" javaType="io.renren.entity.User">
+            <id property="userId" column="user_id" />
+            <result property="userPhone" column="user_phone" />
+            <result property="userNickname" column="user_nickname" />
+            <result property="userPassword" column="user_password" />
+            <result property="userToken" column="user_token" />
+            <result property="userImage" column="user_image" />
+            <result property="userSex" column="user_sex" />
+        </association>
+        <association property="teamId" column="team_id" javaType="io.renren.entity.Team">
+            <id property="teamId" column="team_id" />
+            <result property="teamName" column="team_name" />
+            <result property="teamType" column="team_type" />
+            <result property="teamTime" column="team_time" />
+            <result property="teamImage" column="team_image" />
+            <result property="teamIntroduce" column="team_introduce" />
+        </association>
+    </resultMap>
 
 
 

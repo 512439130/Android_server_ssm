@@ -130,6 +130,25 @@ public class TeamMemberController {
                 }
         }
         
+        /**
+         * 查询负责人的信息
+         * http://localhost:8080/renren-security/teamMember/yy_obtain_team_member_by_responsible?userId=5&teamId=1
+         */
+        @RequestMapping("/yy_obtain_team_member_by_responsible")
+        @ResponseBody
+        public TeamMember getTeamMemberByResponsible( String userId,String teamId) {
+                Map map = new HashMap();
+                map.put("userId", userId);
+                map.put("teamId", teamId);
+                TeamMember teamMembers = teamMemberService.getTeamMemberByResponsible(map);
+               if(teamMembers != null){
+                       System.out.println("查询负责人信息成功"+teamMembers.toString());
+               }else{
+                       System.out.println("查询负责人信息失败");
+               }
+                return teamMembers;
+        }
+        
         
        
         

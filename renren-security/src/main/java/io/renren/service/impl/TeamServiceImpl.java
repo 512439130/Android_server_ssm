@@ -31,6 +31,7 @@ public class TeamServiceImpl implements TeamService {
         @Override
         public List<TeamNews> getTeamNews() {
                 // TODO Auto-generated method stub
+                
                 return teamDao.getTeamNews();
         }
 
@@ -53,9 +54,21 @@ public class TeamServiceImpl implements TeamService {
         }
 
         @Override
-        public TeamMember getTeamByUserId(Map<String, Object> map) {
+        public List<TeamMember> getTeamByUserId(Map<String, Object> map) {
                 // TODO Auto-generated method stub
                 return teamDao.getTeamByUserId(map);
+        }
+
+        @Override
+        public int addTeamNews(TeamNews teamNews) {
+                // TODO Auto-generated method stub
+                return teamDao.addTeamNews(teamNews);
+        }
+
+        @Override
+        public int updateTeamInfo(Team team) {
+                // TODO Auto-generated method stub
+                return teamDao.updateTeamInfo(team);
         }
 
      
