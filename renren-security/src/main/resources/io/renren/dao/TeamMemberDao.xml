@@ -36,6 +36,7 @@
 		AND receive_id = #{receiveId} and team_member_request_state =
 		#{teamMemberRequestState}
 	</select>
+	
 	<resultMap id="TeamMemberRequestMap" type="io.renren.entity.TeamMemberRequest">
 		<id property="teamMemberRequestId" column="team_member_request_id"></id>
 		<result property="receiveId" column="receive_id" />
@@ -60,6 +61,7 @@
 		SELECT * FROM tb_team_member,tb_user,tb_team
 		WHERE tb_team_member.`user_id` = tb_user.`user_id`
 		AND tb_team_member.`team_id` = tb_team.`team_id`
+		AND tb_team_member.`team_member_state` = '0'
 		AND tb_team_member.team_id = #{teamId};
 	</select>
 	<resultMap id="TeamMemberMap" type="io.renren.entity.TeamMember">
@@ -91,6 +93,7 @@
         SELECT * FROM tb_team_member,tb_user,tb_team 
         WHERE tb_team_member.`user_id` = tb_user.`user_id` 
          AND tb_team_member.`team_id` = tb_team.`team_id` 
+         AND tb_team_member.`team_member_state` = '0'
          AND tb_team_member.user_id = #{userId} 
          AND tb_team_member.`team_id` = #{teamId}; 
     </select>
@@ -116,6 +119,19 @@
             <result property="teamIntroduce" column="team_introduce" />
         </association>
     </resultMap>
+
+    <update id="operateTeamMemberState" parameterType="io.renren.entity.TeamMember">
+        update tb_team_member
+        <set>
+            `team_member_state` = #{teamMemberState},
+        </set>
+        where team_member_id = #{teamMemberId}
+    </update>
+
+
+
+
+
 
 
 

@@ -39,6 +39,12 @@ public interface TeamTaskService {
          */
         int auditTeamTaskSummary(Map<String, Object> map);
         
+        /**
+         * 获取所有社团活动(社长获取)
+         */
+        List<TeamTask> getTeamTaskByTeamId(Map<String, Object> map);
+        
+        
         
         
         

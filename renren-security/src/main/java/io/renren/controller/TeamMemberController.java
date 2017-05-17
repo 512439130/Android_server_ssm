@@ -150,6 +150,29 @@ public class TeamMemberController {
         }
         
         
+        
+        
+        /**
+         * 处理社团成员退出
+         *http://localhost:8080/renren-security/teamMember/yy_operate_team_state?teamMemberId=4&teamMemberState = '1'
+         */
+        @RequestMapping("/yy_operate_team_state")
+        @ResponseBody
+        public int operateTeamMemberState(String teamMemberId,String teamMemberState) {
+              Map map = new HashMap();
+              map.put("teamMemberId", teamMemberId);
+              map.put("teamMemberState", teamMemberState);
+              
+                int result = teamMemberService.operateTeamMemberState(map);
+                if (result == 1) {
+                        System.out.println("退出社团处理成功");
+                        return result;
+                } else {
+                        System.out.println("退出社团处理失败");
+                        return result;
+                }
+        }
+        
        
         
         

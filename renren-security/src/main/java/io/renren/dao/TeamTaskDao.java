@@ -32,4 +32,9 @@ public interface TeamTaskDao  {
          * 填写活动总结
          */
         int auditTeamTaskSummary(Map<String, Object> map);
+        
+        /**
+         * 获取所有社团活动(社长获取)
+         */
+        List<TeamTask> getTeamTaskByTeamId(Map<String, Object> map);
 }

@@ -52,8 +52,8 @@ public class TeamTaskController {
         }
 
         /**
-         * 查询负责人的社团任务 http://localhost:8080/renren-security/teamTask/
-         * yy_obtain_team_member_task?teamMemberId=5
+         * 查询负责人的社团任务 
+         * http://localhost:8080/renren-security/teamTask/yy_obtain_team_member_task?teamMemberId=5
          */
         @RequestMapping("/yy_obtain_team_member_task")
         @ResponseBody
@@ -132,6 +132,27 @@ public class TeamTaskController {
                         // 改变3条记录返回值不为1
                         System.out.println("处理失败");
                         return result;
+                }
+        }
+        
+        
+        
+        /**
+         * 查询社团的所有任务 
+         * http://localhost:8080/renren-security/teamTask/yy_obtain_team_task_summary?teamId=1
+         */
+        @RequestMapping("/yy_obtain_team_task_summary")
+        @ResponseBody
+        public List<TeamTask> getTeamTaskByTeamId(Integer teamId) {
+                Map map = new HashMap();
+                map.put("teamId", teamId);
+                List<TeamTask> teamTask = teamTaskService.getTeamTaskByTeamId(map);
+                if (teamTask != null) {
+                        System.out.println("社团所有活动获取成功：");
+                        return teamTask;
+                } else {
+                        System.out.println("社团所有活动获取失败");
+                        return teamTask;
                 }
         }
 

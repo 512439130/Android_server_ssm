@@ -43,7 +43,8 @@
         WHERE tb_task.`task_responsible_id` = tb_team_member.`team_member_id` 
         AND tb_team_member.`team_id` = tb_team.`team_id`
         AND tb_team_member.`user_id` = tb_user.`user_id`
-        AND team_member_id = #{teamMemberId};
+        AND team_member_id = #{teamMemberId} 
+        AND tb_team_member.`team_member_state` = 0;
     </select>
     <resultMap id="TeamMemberTaskMap" type="io.renren.entity.TeamTask">
         <id property="taskId" column="task_id" />
@@ -105,6 +106,41 @@
             </set>
             WHERE task_id = #{taskId};
         </update>
+        
+        
+        
+    <select id="getTeamTaskByTeamId" resultMap="SummaryTeamTaskMap">
+        SELECT task_id,task_title,task_content,task_release_id,tb_team_member.team_member_id,task_state,task_max_number,task_create_time,task_summary,
+        tb_team.`team_name`,tb_team.`team_image` ,tb_user.`user_nickname`
+        FROM tb_task,tb_team_member,tb_team,tb_user 
+        WHERE tb_task.`task_responsible_id` = tb_team_member.`team_member_id` 
+        AND tb_team_member.`team_id` = tb_team.`team_id`
+        AND tb_team_member.`user_id` = tb_user.`user_id`
+        AND tb_team_member.`team_member_state` = '0'
+        AND tb_team.`team_id`= #{teamId};
+    </select>
+    <resultMap id="SummaryTeamTaskMap" type="io.renren.entity.TeamTask">
+        <id property="taskId" column="task_id" />
+        <result property="taskTitle" column="task_title" />
+        <result property="taskContent" column="task_content" />
+        <result property="taskReleaseId" column="task_release_id" />
+        <result property="taskState" column="task_state" />
+        <result property="taskMaxNumber" column="task_max_number" />
+        <result property="taskCreateTime" column="task_create_time" />
+        <result property="taskSummary" column="task_summary" />
+        
+        <association property="taskResponsibleId" column="task_responsible_id" javaType="io.renren.entity.TeamMember">
+            <id property="teamMemberId" column="team_member_id"></id>
+            <association property="teamId" column="team_id" javaType="io.renren.entity.Team">
+                <id property="teamId" column="team_id" />
+                <result property="teamName" column="team_name" />
+                <result property="teamImage" column="team_image" />
+            </association>
+            <association property="userId" column="user_id" javaType="io.renren.entity.User">
+                    <result property="userNickname" column="user_nickname" />
+             </association>
+        </association>
+    </resultMap>
 	    
 
 </mapper>

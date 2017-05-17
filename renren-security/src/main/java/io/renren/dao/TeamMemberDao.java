@@ -40,5 +40,11 @@ public interface TeamMemberDao  {
          * @return
          */
         TeamMember getTeamMemberByResponsible(Map<String, Object> map);
-       
+      
+        
+        
+        /**
+         * 退出社团的处理
+         */
+        int operateTeamMemberState(Map<String, Object> map);
 }

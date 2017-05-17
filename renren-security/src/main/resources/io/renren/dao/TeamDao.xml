@@ -129,7 +129,8 @@
 	<select id="getTeamByUserId" resultMap="TeamMemberMap">
 		SELECT * FROM tb_team_member,tb_team
 		WHERE tb_team_member.`team_id` = tb_team.`team_id`
-		AND user_id = #{userId};
+		AND user_id = #{userId}
+		AND tb_team_member.`team_member_state` = '0';
 	</select>
 
 	<resultMap id="TeamMemberMap" type="io.renren.entity.TeamMember">

@@ -42,4 +42,10 @@ public interface TeamMemberService {
          * @return
          */
         TeamMember getTeamMemberByResponsible(Map<String, Object> map);
+        
+        
+        /**
+         * 退出社团处理
+         */
+        int operateTeamMemberState(Map<String, Object> map);
 }

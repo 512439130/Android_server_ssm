@@ -39,5 +39,10 @@ public class TeamTaskServiceImpl implements TeamTaskService {
                 // TODO Auto-generated method stub
                 return teamTaskDao.auditTeamTaskSummary(map);
         }
+        @Override
+        public List<TeamTask> getTeamTaskByTeamId(Map<String, Object> map) {
+                // TODO Auto-generated method stub
+                return teamTaskDao.getTeamTaskByTeamId(map);
+        }
 
 }
