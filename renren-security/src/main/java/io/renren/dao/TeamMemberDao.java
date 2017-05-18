@@ -47,4 +47,9 @@ public interface TeamMemberDao  {
          * 退出社团的处理
          */
         int operateTeamMemberState(Map<String, Object> map);
+        
+        /**
+         * 修改社员社团职位
+         */
+        int operateTeamMemberPositionState(Map<String, Object> map);
 }

@@ -128,7 +128,15 @@
         where team_member_id = #{teamMemberId}
     </update>
 
-
+    <update id="operateTeamMemberPositionState" parameterType="io.renren.entity.TeamMember">
+        update tb_team_member
+        <set>
+            `team_member_position` = #{teamMemberPosition},
+        </set>
+        where user_id = #{userId}
+        AND team_id = #{teamId}
+        AND team_member_state = 0
+    </update>
 
 
 

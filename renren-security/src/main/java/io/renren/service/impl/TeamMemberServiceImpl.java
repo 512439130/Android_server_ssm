@@ -66,6 +66,12 @@ public class TeamMemberServiceImpl implements TeamMemberService {
                 // TODO Auto-generated method stub
                 return teamMemberDao.operateTeamMemberState(map);
         }
+
+        @Override
+        public int operateTeamMemberPositionState(Map<String, Object> map) {
+                // TODO Auto-generated method stub
+                return teamMemberDao.operateTeamMemberPositionState(map);
+        }
 	
 
        

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.dao.CommunityDao">
+
+	<select id="getCommunity" resultMap="CommunityMap">
+		SELECT * FROM tb_user,tb_team,tb_team_member,tb_community
+        WHERE tb_community.`team_member_id` = tb_team_member.`team_member_id` 
+        AND tb_team_member.`team_id` = tb_team.`team_id`
+        AND tb_team_member.`user_id` = tb_user.`user_id`
+        AND tb_team_member.`team_member_state` = 0
+	</select>
+	<resultMap id="CommunityMap" type="io.renren.entity.Community">
+		<id property="communityId" column="community_id"></id>
+		<result property="communityContent" column="community_content" />
+		<result property="communityImage" column="community_image" />
+		<result property="communityTime" column="community_time" />
+		<association property="teamMemberId" column="team_member_id" javaType="io.renren.entity.TeamMember">
+			<id property="teamMemberId" column="team_member_id"></id>
+	        <result property="teamMemberPosition" column="team_member_position" />
+	        <result property="teamMemberJoinTime" column="team_member_join_time" />
+	        <association property="userId" column="user_id" javaType="io.renren.entity.User">
+	            <id property="userId" column="user_id" />
+	            <result property="userPhone" column="user_phone" />
+	            <result property="userNickname" column="user_nickname" />
+	            <result property="userPassword" column="user_password" />
+	            <result property="userToken" column="user_token" />
+	            <result property="userImage" column="user_image" />
+	            <result property="userSex" column="user_sex" />
+	        </association>
+	        <association property="teamId" column="team_id" javaType="io.renren.entity.Team">
+	            <id property="teamId" column="team_id" />
+	            <result property="teamName" column="team_name" />
+	            <result property="teamType" column="team_type" />
+	            <result property="teamTime" column="team_time" />
+	            <result property="teamImage" column="team_image" />
+	            <result property="teamIntroduce" column="team_introduce" />
+	        </association>
+		</association>
+	</resultMap>
+	
+	
+	<insert id="addCommunity" parameterType="io.renren.entity.Community"
+        useGeneratedKeys="true" keyProperty="community_id">
+        insert into tb_community
+        (
+        `team_member_id`,
+        `community_content`,
+        `community_image`,
+        `community_time`
+        )
+        values
+        (
+        #{teamMemberId.teamMemberId},
+        #{communityContent},
+        #{communityImage},
+        #{communityTime}
+        )
+    </insert>
+	
+    
+
+    
+</mapper>

@@ -175,6 +175,28 @@ public class TeamMemberController {
         
        
         
+        /**
+         * 改变社团成员职位
+         *http://localhost:8080/renren-security/teamMember/yy_operate_team_member_position_state?userId=4&teamId=1&teamMemberPosition=部长
+         */
+        @RequestMapping("/yy_operate_team_member_position_state")
+        @ResponseBody
+        public int operateTeamMemberPositionState(String userId,String teamId,String teamMemberPosition) {
+              Map map = new HashMap();
+              map.put("userId", userId);
+              map.put("teamId", teamId);
+              map.put("teamMemberPosition", teamMemberPosition);
+              
+                int result = teamMemberService.operateTeamMemberPositionState(map);
+                if (result == 1) {
+                        System.out.println("修改社团职位处理成功");
+                        return result;
+                } else {
+                        System.out.println("修改社团职位处理失败");
+                        return result;
+                }
+        }
+        
         
         
 }

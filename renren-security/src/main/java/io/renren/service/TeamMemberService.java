@@ -48,4 +48,10 @@ public interface TeamMemberService {
          * 退出社团处理
          */
         int operateTeamMemberState(Map<String, Object> map);
+        
+        /**
+         * 修改社员社团职位
+         */
+        int operateTeamMemberPositionState(Map<String, Object> map);
+        
 }
